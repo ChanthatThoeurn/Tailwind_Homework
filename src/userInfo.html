@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./userInfo.html">
+  <title>User Profile - Tailwind CSS</title>
+  <!-- Include Tailwind CSS from CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Configure Tailwind theme -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              200: '#bae6fd',
+              300: '#7dd3fc',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+  <!-- Header/Navigation -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex">
+          <div class="flex-shrink-0 flex items-center">
+            <span class="text-primary-600 text-xl font-bold">ProfileHub</span>
+          </div>
+          <nav class="hidden sm:ml-6 sm:flex sm:space-x-8">
+            <a href="#" class="border-primary-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+              Profile
+            </a>
+            <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+              Dashboard
+            </a>
+            <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+              Messages
+            </a>
+            <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+              Settings
+            </a>
+          </nav>
+        </div>
+        <div class="hidden sm:ml-6 sm:flex sm:items-center">
+          <button type="button" class="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+            <span class="sr-only">View notifications</span>
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+            </svg>
+          </button>
+          <div class="ml-3 relative">
+            <div>
+              <button type="button" class="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                <span class="sr-only">Open user menu</span>
+                <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="-mr-2 flex items-center sm:hidden">
+          <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500" aria-controls="mobile-menu" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="sm:hidden" id="mobile-menu">
+      <div class="pt-2 pb-3 space-y-1">
+        <a href="#" class="bg-primary-50 border-primary-500 text-primary-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+          Profile
+        </a>
+        <a href="#" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+          Dashboard
+        </a>
+        <a href="#" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+          Messages
+        </a>
+        <a href="#" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+          Settings
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+    <!-- Profile Header -->
+    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+      <div class="px-4 py-5 sm:px-6">
+        <div class="flex flex-col sm:flex-row">
+          <div class="flex-shrink-0 mb-4 sm:mb-0">
+            <img class="h-32 w-32 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=80" alt="Profile picture">
+          </div>
+          <div class="sm:ml-6 flex flex-col justify-center">
+            <h1 class="text-2xl font-bold text-gray-900">Alex Johnson</h1>
+            <p class="text-sm text-gray-500">Senior Product Designer</p>
+            <div class="mt-1 flex items-center text-sm text-gray-500">
+              <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+              </svg>
+              San Francisco, CA
+            </div>
+            <div class="mt-1 flex items-center text-sm text-gray-500">
+              <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+              </svg>
+              alex.johnson@example.com
+            </div>
+            <div class="mt-3 flex space-x-3">
+              <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                Follow
+              </button>
+              <button type="button" class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                Message
+              </button>
+              <div class="dropdown relative ml-3">
+                <button class="inline-flex items-center px-2 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                  <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Stats -->
+      <div class="border-t border-gray-200">
+        <dl>
+          <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
+            <div class="text-center">
+              <dt class="text-sm font-medium text-gray-500">Posts</dt>
+              <dd class="mt-1 text-3xl font-semibold text-gray-900">142</dd>
+            </div>
+            <div class="text-center mt-5 sm:mt-0">
+              <dt class="text-sm font-medium text-gray-500">Followers</dt>
+              <dd class="mt-1 text-3xl font-semibold text-gray-900">2.8k</dd>
+            </div>
+            <div class="text-center mt-5 sm:mt-0">
+              <dt class="text-sm font-medium text-gray-500">Following</dt>
+              <dd class="mt-1 text-3xl font-semibold text-gray-900">268</dd>
+            </div>
+            <div class="text-center mt-5 sm:mt-0">
+              <dt class="text-sm font-medium text-gray-500">Projects</dt>
+              <dd class="mt-1 text-3xl font-semibold text-gray-900">36</dd>
+            </div>
+          </div>
+        </dl>
+      </div>
+    </div>
+
+    <!-- Tabs and Content -->
+    <div class="mt-6">
+      <div class="sm:hidden">
+        <label for="tabs" class="sr-only">Select a tab</label>
+        <select id="tabs" name="tabs" class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md">
+          <option selected>About</option>
+          <option>Timeline</option>
+          <option>Projects</option>
+          <option>Skills</option>
+        </select>
+      </div>
+      <div class="hidden sm:block">
+        <div class="border-b border-gray-200">
+          <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+            <a href="#" class="border-primary-500 text-primary-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" aria-current="page">
+              About
+            </a>
+            <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+              Timeline
+            </a>
+            <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+              Projects
+            </a>
+            <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+              Skills
+            </a>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Section -->
+    <div class="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-3">
+      <!-- Left Column -->
+      <div class="lg:col-span-1">
+        <!-- About Me -->
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-6">
+          <div class="px-4 py-5 sm:px-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">About Me</h3>
+          </div>
+          <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
+            <p class="text-sm text-gray-500">
+              Product designer with 5+ years of experience creating user-centered digital experiences. Passionate about solving complex problems with elegant, intuitive designs. Specializing in UI/UX design, prototyping, and user research.
+            </p>
+          </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-6">
+          <div class="px-4 py-5 sm:px-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">Skills</h3>
+          </div>
+          <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
+            <div class="flex flex-wrap gap-2">
+              <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-primary-100 text-primary-800">
+                UI Design
+              </span>
+              <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-primary-100 text-primary-800">
+                UX Research
+              </span>
+              <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-primary-100 text-primary-800">
+                Figma
+              </span>
+              <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-primary-100 text-primary-800">
+                Sketch
+              </span>
+              <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-primary-100 text-primary-800">
+                Adobe XD
+              </span>
+              <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-primary-100 text-primary-800">
+                Prototyping
+              </span>
+              <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-primary-100 text-primary-800">
+                User Testing
+              </span>
+              <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-primary-100 text-primary-800">
+                HTML/CSS
+              </span>
+              <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-primary-100 text-primary-800">
+                Design Systems
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+          <div class="px-4 py-5 sm:px-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">Contact Information</h3>
+          </div>
+          <div class="border-t border-gray-200">
+            <dl>
+              <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">Email</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">alex.johnson@example.com</dd>
+              </div>
+              <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">Phone</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">(555) 123-4567</dd>
+              </div>
+              <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">Location</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">San Francisco, California</dd>
+              </div>
+              <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">Website</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                  <a href="#" class="text-primary-600 hover:text-primary-500">alexjohnson.design</a>
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="lg:col-span-2">
+        <!-- Experience -->
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-6">
+          <div class="px-4 py-5 sm:px-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">Experience</h3>
+          </div>
+          <div class="border-t border-gray-200">
+            <div class="px-4 py-5 sm:px-6">
+              <div class="space-y-8">
+                <!-- Job 1 -->
+                <div class="relative">
+                  <div class="relative flex space-x-3">
+                    <div>
+                      <span class="h-10 w-10 rounded-full bg-primary-500 flex items-center justify-center ring-8 ring-white">
+                        <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                      </span>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <div>
+                        <div class="text-sm">
+                          <a href="#" class="font-medium text-gray-900">Senior Product Designer</a>
+                        </div>
+                        <div class="mt-1 flex items-center text-sm text-gray-500">
+                          <span>Design Co. • 2021 - Present</span>
+                        </div>
+                      </div>
+                      <div class="mt-2 text-sm text-gray-700">
+                        <p>
+                          Leading product design for enterprise clients, managing a team of 3 designers. Responsible for creating design systems, conducting user research, and implementing design thinking methodologies.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="relative">
+                  <div class="relative flex space-x-3">
+                    <div>
+                      <span class="h-10 w-10 rounded-full bg-primary-500 flex items-center justify-center ring-8 ring-white">
+                        <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                      </span>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <div>
+                        <div class="text-sm">
+                          <a href="#" class="font-medium text-gray-900">Product Designer</a>
+                        </div>
+                        <div class="mt-1 flex items-center text-sm text-gray-500">
+                          <span>Tech Solutions Inc. • 2018 - 2021</span>
+                        </div>
+                      </div>
+                      <div class="mt-2 text-sm text-gray-700">
+                        <p>
+                          Designed user interfaces for mobile and web applications, conducted user research, and created wireframes and prototypes. Collaborated with developers to ensure design implementation.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Job 3 -->
+                <div class="relative">
+                  <div class="relative flex space-x-3">
+                    <div>
+                      <span class="h-10 w-10 rounded-full bg-primary-500 flex items-center justify-center ring-8 ring-white">
+                        <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                      </span>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <div>
+                        <div class="text-sm">
+                          <a href="#" class="font-medium text-gray-900">UI/UX Designer</a>
+                        </div>
+                        <div class="mt-1 flex items-center text-sm text-gray-500">
+                          <span>Creative Agency • 2016 - 2018</span>
+                        </div>
+                      </div>
+                      <div class="mt-2 text-sm text-gray-700">
+                        <p>
+                          Created wireframes, prototypes, and visual designs for various client projects. Worked closely with the development team to ensure design fidelity in the final product.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Projects -->
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+          <div class="px-4 py-5 sm:px-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">Recent Projects</h3>
+          </div>
+          <div class="border-t border-gray-200">
+            <div class="px-4 py-5 sm:px-6">
+              <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <!-- Project 1 -->
+                <div class="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-primary-500">
+                  <div class="flex-shrink-0">
+                    <img class="h-10 w-10 rounded-full" src="https://via.placeholder.com/40/4f46e5/ffffff?text=E" alt="">
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <a href="#" class="focus:outline-none">
+                      <span class="absolute inset-0" aria-hidden="true"></span>
+                      <p class="text-sm font-medium text-gray-900">E-commerce Redesign</p>
+                      <p class="text-sm text-gray-500 truncate">Complete redesign of the client's e-commerce platform</p>
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-primary-500">
+                  <div class="flex-shrink-0">
+                    <img class="h-10 w-10 rounded-full" src="https://via.placeholder.com/40/0ea5e9/ffffff?text=M" alt="">
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <a href="#" class="focus:outline-none">
+                      <span class="absolute inset-0" aria-hidden="true"></span>
+                      <p class="text-sm font-medium text-gray-900">Mobile Banking App</p>
+                      <p class="text-sm text-gray-500 truncate">UI/UX design for a mobile banking application</p>
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-primary-500">
+                  <div class="flex-shrink-0">
+                    <img class="h-10 w-10 rounded-full" src="https://via.placeholder.com/40/10b981/ffffff?text=H" alt="">
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <a href="#" class="focus:outline-none">
+                      <span class="absolute inset-0" aria-hidden="true"></span>
+                      <p class="text-sm font-medium text-gray-900">Healthcare Dashboard</p>
+                      <p class="text-sm text-gray-500 truncate">Patient management dashboard for healthcare providers</p>
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-primary-500">
+                  <div class="flex-shrink-0">
+                    <img class="h-10 w-10 rounded-full" src="https://via.placeholder.com/40/f59e0b/ffffff?text=F" alt="">
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <a href="#" class="focus:outline-none">
+                      <span class="absolute inset-0" aria-hidden="true"></span>
+                      <p class="text-sm font-medium text-gray-900">Fitness Tracking App</p>
+                      <p class="text-sm text-gray-500 truncate">Mobile app for tracking workouts and nutrition</p>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white">
+    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
+      <div class="flex justify-center space-x-6 md:order-2">
+        <a href="#" class="text-gray-400 hover:text-gray-500">
+          <span class="sr-only">Twitter</span>
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+          </svg>
+        </a>
+        <a href="#" class="text-gray-400 hover:text-gray-500">
+          <span class="sr-only">LinkedIn</span>
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+          </svg>
+        </a>
+        <a href="#" class="text-gray-400 hover:text-gray-500">
+          <span class="sr-only">GitHub</span>
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+          </svg>
+        </a>
+        <a href="#" class="text-gray-400 hover:text-gray-500">
+          <span class="sr-only">Dribbble</span>
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z" clip-rule="evenodd" />
+          </svg>
+        </a>
+      </div>
+      <div class="mt-8 md:mt-0 md:order-1">
+        <p class="text-center text-base text-gray-400">
+          &copy; 2023 ProfileHub. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Simple JavaScript for mobile menu toggle -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuButton = document.querySelector('[aria-controls="mobile-menu"]');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      mobileMenuButton.addEventListener('click', function() {
+        const expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', !expanded);
+        mobileMenu.classList.toggle('hidden');
+        
+        // Toggle the hamburger/x icon
+        const hamburgerIcon = this.querySelector('.block');
+        const closeIcon = this.querySelector('.hidden');
+        hamburgerIcon.classList.toggle('hidden');
+        hamburgerIcon.classList.toggle('block');
+        closeIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('block');
+      });
+    });
+  </script>
+</body>
+</html>
